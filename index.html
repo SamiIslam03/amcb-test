@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMCB Foundation Bangladesh - Making a Difference in Rural Communities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a365d;
+            --primary-dark: #0f2744;
+            --secondary-color: #115e59;
+            --accent-color: #b8860b;
+            --accent-light: #d4a855;
+            --text-dark: #1a202c;
+            --text-light: #4a5568;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .donate-btn {
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--bg-light);
+            border-radius: 2rem;
+            padding: 0.25rem;
+            margin-left: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 1.5rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* Bangla font styling */
+        html[lang="bn"] body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+        }
+
+        html[lang="bn"] h1, 
+        html[lang="bn"] h2, 
+        html[lang="bn"] h3, 
+        html[lang="bn"] .logo {
+            font-family: 'Noto Sans Bengali', 'Playfair Display', serif;
+        }
+
+        /* Hide content based on language */
+        [data-lang-en], [data-lang-bn] {
+            display: none !important;
+        }
+
+        html[lang="en"] [data-lang-en] {
+            display: block !important;
+        }
+
+        html[lang="bn"] [data-lang-bn] {
+            display: block !important;
+        }
+
+        /* For inline elements */
+        html[lang="en"] span[data-lang-en],
+        html[lang="en"] a[data-lang-en] {
+            display: inline !important;
+        }
+
+        html[lang="bn"] span[data-lang-bn],
+        html[lang="bn"] a[data-lang-bn] {
+            display: inline !important;
+        }
+
+        /* For list items */
+        html[lang="en"] li[data-lang-en] {
+            display: list-item !important;
+        }
+
+        html[lang="bn"] li[data-lang-bn] {
+            display: list-item !important;
+        }
+
+        /* For flex items in hero buttons */
+        html[lang="en"] .hero-buttons a[data-lang-en] {
+            display: inline-block !important;
+        }
+
+        html[lang="bn"] .hero-buttons a[data-lang-bn] {
+            display: inline-block !important;
+        }
+
+        /* For stat labels */
+        html[lang="en"] .stat-label[data-lang-en],
+        html[lang="bn"] .stat-label[data-lang-bn] {
+            display: block !important;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Slideshow Background */
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide:nth-child(1) { background-image: url('images/home_1.jpg'); }
+        .hero-slide:nth-child(2) { background-image: url('images/home_2.jpg'); }
+        .hero-slide:nth-child(3) { background-image: url('images/home_3.jpg'); }
+        .hero-slide:nth-child(4) { background-image: url('images/services1.jpg'); }
+        .hero-slide:nth-child(5) { background-image: url('images/services2.jpg'); }
+
+        /* Overlay with reduced opacity */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.75) 0%, rgba(15, 39, 68, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--bg-light);
+            padding: 4rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #1a365d 0%, #115e59 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        .read-more::after {
+            content: '→';
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, #1a365d 0%, #0f2744 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .impact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Donate Section */
+        .donate-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .donate-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .donate-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .donate-intro h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .donate-intro .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .donate-intro p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .donate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .donate-card {
+            background: transparent;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .donate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+            background: rgba(26, 54, 93, 0.02);
+        }
+
+        .donate-card-icon {
+            width: 60px;
+            height: 60px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .donate-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .donate-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .donate-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .donate-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .donate-card ul li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .donate-card .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .donate-card .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .registration-info {
+            background: linear-gradient(135deg, #faf5e4, #f5ecd3);
+            border: 1px solid var(--accent-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .registration-info p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .registration-info strong {
+            color: var(--primary-color);
+        }
+
+        /* Archive Section */
+        .archive-section {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .archive-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .archive-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .archive-link {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .archive-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="AMCB Foundation Logo" class="logo-img">
+                <span data-lang-en>AMCB Foundation</span>
+                <span data-lang-bn>এএমসিবি ফাউন্ডেশন</span>
+            </a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#home" data-lang-en>Home</a>
+                    <a href="#home" data-lang-bn>হোম</a>
+                </li>
+                <li>
+                    <a href="#impact" data-lang-en>Our Impact</a>
+                    <a href="#impact" data-lang-bn>আমাদের প্রভাব</a>
+                </li>
+                <li>
+                    <a href="#blog" data-lang-en>Blog</a>
+                    <a href="#blog" data-lang-bn>ব্লগ</a>
+                </li>
+                <li>
+                    <a href="#about" data-lang-en>About</a>
+                    <a href="#about" data-lang-bn>আমাদের সম্পর্কে</a>
+                </li>
+                <li>
+                    <a href="#contact" data-lang-en>Contact</a>
+                    <a href="#contact" data-lang-bn>যোগাযোগ</a>
+                </li>
+                <li>
+                    <a href="#donate" class="donate-btn" data-lang-en>Donate Now</a>
+                    <a href="#donate" class="donate-btn" data-lang-bn>দান করুন</a>
+                </li>
+                <li>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                        <button class="lang-btn" onclick="setLanguage('bn')">বাং</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Slideshow Background -->
+        <div class="hero-slideshow">
+            <div class="hero-slide active"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+        <!-- Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 data-lang-en>Making a Difference in Rural Bangladesh</h1>
+            <h1 data-lang-bn>গ্রামীণ বাংলাদেশে পরিবর্তন আনছি</h1>
+            <p data-lang-en>AMCB Foundation Bangladesh provides essential medical care, disaster relief, and community support to villages in the Munshiganj District and beyond.</p>
+            <p data-lang-bn>এএমসিবি ফাউন্ডেশন বাংলাদেশ মুন্সীগঞ্জ জেলা এবং এর বাইরের গ্রামগুলোতে প্রয়োজনীয় চিকিৎসা সেবা, দুর্যোগ ত্রাণ এবং কমিউনিটি সহায়তা প্রদান করে।</p>
+            <div class="hero-buttons">
+                <a href="#donate" class="btn btn-primary" data-lang-en>Support Our Work</a>
+                <a href="#donate" class="btn btn-primary" data-lang-bn>আমাদের কাজে সহায়তা করুন</a>
+                <a href="#blog" class="btn btn-secondary" data-lang-en>Read Our Stories</a>
+                <a href="#blog" class="btn btn-secondary" data-lang-bn>আমাদের গল্প পড়ুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">৬০০+</div>
+                <div class="stat-label" data-lang-en>Patients Treated</div>
+                <div class="stat-label" data-lang-bn>রোগী চিকিৎসা</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">৪০০+</div>
+                <div class="stat-label" data-lang-en>Blankets Distributed</div>
+                <div class="stat-label" data-lang-bn>কম্বল বিতরণ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">১২+</div>
+                <div class="stat-label" data-lang-en>Villages Served</div>
+                <div class="stat-label" data-lang-bn>গ্রামে সেবা</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">৫+</div>
+                <div class="stat-label" data-lang-en>Years of Service</div>
+                <div class="stat-label" data-lang-bn>বছর ধরে সেবা</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="container" id="blog">
+        <h2 class="section-title" data-lang-en>Our Recent Activities</h2>
+        <h2 class="section-title" data-lang-bn>আমাদের সাম্প্রতিক কার্যক্রম</h2>
+        <p class="section-subtitle" data-lang-en>Discover how we're making a tangible difference in the lives of those who need it most.</p>
+        <p class="section-subtitle" data-lang-bn>আমরা কিভাবে সবচেয়ে সাহায্যপ্রার্থী মানুষদের জীবনে বাস্তব পরিবর্তন আনছি তা জানুন।</p>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/AMCB Foundation Bangladesh medical clinic .jpg" alt="Medical Treatment"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 June 4, 2022</div>
+                    <h3 class="blog-title" data-lang-en>Medical Treatment in Villages - April 2022</h3>
+                    <h3 class="blog-title" data-lang-bn>গ্রামে চিকিৎসা সেবা - এপ্রিল ২০২২</h3>
+                    <p class="blog-excerpt" data-lang-en>Starting in April 2022, AMCB Foundation Bangladesh began providing monthly medical clinics at its facility in Bikrampur Khilgaon, Munshiganj District for villagers who can't afford medical care.</p>
+                    <p class="blog-excerpt" data-lang-bn>এপ্রিল ২০২২ থেকে, এএমসিবি ফাউন্ডেশন বাংলাদেশ মুন্সীগঞ্জ জেলার বিক্রমপুর খিলগাঁওয়ে তাদের কেন্দ্রে প্রতি মাসে বিনামূল্যে চিকিৎসা সেবা প্রদান শুরু করে।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/services3.jpg" alt="Blanket Distribution"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 December 21, 2021</div>
+                    <h3 class="blog-title" data-lang-en>400+ Blankets Distributed in Winter</h3>
+                    <h3 class="blog-title" data-lang-bn>শীতকালে ৪০০+ কম্বল বিতরণ</h3>
+                    <p class="blog-excerpt" data-lang-en>During the first week of December 2021, AMCB Foundation Bangladesh distributed more than 400 blankets in Bikrampur Khilgaon and surrounding villages. The event received coverage in both newspaper and television.</p>
+                    <p class="blog-excerpt" data-lang-bn>ডিসেম্বর ২০২১ এর প্রথম সপ্তাহে, এএমসিবি ফাউন্ডেশন বাংলাদেশ বিক্রমপুর খিলগাঁও এবং আশেপাশের গ্রামগুলোতে ৪০০টিরও বেশি কম্বল বিতরণ করে। এই অনুষ্ঠানটি সংবাদপত্র এবং টেলিভিশনে প্রচারিত হয়।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/services6.jpg" alt="Mosquito Control"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 October 4, 2021</div>
+                    <h3 class="blog-title" data-lang-en>Mosquito Control Initiative Against Dengue</h3>
+                    <h3 class="blog-title" data-lang-bn>ডেঙ্গু প্রতিরোধে মশা নিয়ন্ত্রণ উদ্যোগ</h3>
+                    <p class="blog-excerpt" data-lang-en>In coordination with the Munshiganj District branch of Bangladesh Human Rights Development Commission, we worked to reduce mosquito population and combat Dengue Fever in Bikrampur Khilgaon and surrounding villages.</p>
+                    <p class="blog-excerpt" data-lang-bn>বাংলাদেশ মানবাধিকার উন্নয়ন কমিশনের মুন্সীগঞ্জ জেলা শাখার সাথে সমন্বয়ে, আমরা বিক্রমপুর খিলগাঁও এবং আশেপাশের গ্রামগুলোতে মশা নিয়ন্ত্রণ এবং ডেঙ্গু জ্বর প্রতিরোধে কাজ করেছি।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/AMCB Foundation Bangladesh Medical Facility and Distribution Center .jpg" alt="Free Medical Clinic"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 April 23, 2021</div>
+                    <h3 class="blog-title" data-lang-en>Free Medical Clinic Treats 600+ People</h3>
+                    <h3 class="blog-title" data-lang-bn>বিনামূল্যে চিকিৎসা ক্যাম্পে ৬০০+ মানুষের চিকিৎসা</h3>
+                    <p class="blog-excerpt" data-lang-en>On April 3, 2021, AMCB Foundation Bangladesh conducted a free medical clinic where more than 600 poor and needy patients from more than 12 villages received free medical treatment and medicine.</p>
+                    <p class="blog-excerpt" data-lang-bn>৩ এপ্রিল, ২০২১ তারিখে, এএমসিবি ফাউন্ডেশন বাংলাদেশ একটি বিনামূল্যে চিকিৎসা ক্যাম্প পরিচালনা করে যেখানে ১২টিরও বেশি গ্রাম থেকে ৬০০ এর বেশি দরিদ্র ও অসহায় রোগী বিনামূল্যে চিকিৎসা এবং ওষুধ পান।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/services15.jpg" alt="Deshfest Support"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 March 18, 2021</div>
+                    <h3 class="blog-title" data-lang-en>Support Deshfest - March 26</h3>
+                    <h3 class="blog-title" data-lang-bn>দেশফেস্ট সাপোর্ট করুন - ২৬ মার্চ</h3>
+                    <p class="blog-excerpt" data-lang-en>We announced Deshfest, a virtual fundraiser held on March 26 to support charities working in Bangladesh. Our goal is to increase awareness for charitable works done by participating organizations.</p>
+                    <p class="blog-excerpt" data-lang-bn>আমরা দেশফেস্ট ঘোষণা করেছি, ২৬ মার্চে অনুষ্ঠিত একটি ভার্চুয়াল ফান্ডরেইজার যা বাংলাদেশে কাজ করা দাতব্য সংস্থাগুলোকে সাহায্য করে।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-image"><img src="images/home_1.jpg" alt="Bangladesh Independence Day"></div>
+                <div class="blog-content">
+                    <div class="blog-date">📅 March 12, 2021</div>
+                    <h3 class="blog-title" data-lang-en>Join Deshfest on Bangladesh Independence Day</h3>
+                    <h3 class="blog-title" data-lang-bn>স্বাধীনতা দিবসে দেশফেস্টে যোগ দিন</h3>
+                    <p class="blog-excerpt" data-lang-en>Announcing Deshfest, a virtual fundraising event on March 26, 2021 (Bangladesh Independence Day). This is the first time we're doing this and we hope to make it a regular fundraising event to bring together charities and social groups.</p>
+                    <p class="blog-excerpt" data-lang-bn>দেশফেস্ট ঘোষণা করা হচ্ছে, ২৬ মার্চ, ২০২১ (বাংলাদেশ স্বাধীনতা দিবস) এ একটি ভার্চুয়াল ফান্ডরেইজিং ইভেন্ট। এটি প্রথমবারের মতো এবং আমরা এটিকে নিয়মিত ফান্ডরেইজিং ইভেন্টে পরিণত করতে চাই।</p>
+                    <a href="#" class="read-more" data-lang-en>Read More</a>
+                    <a href="#" class="read-more" data-lang-bn>আরো পড়ুন</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Archive Section -->
+    <section class="archive-section">
+        <div class="archive-container">
+            <h2 class="archive-title" data-lang-en>Blog Archives</h2>
+            <h2 class="archive-title" data-lang-bn>ব্লগ আর্কাইভ</h2>
+            <div class="archive-grid">
+                <a href="#" class="archive-link">June 2022</a>
+                <a href="#" class="archive-link">December 2021</a>
+                <a href="#" class="archive-link">October 2021</a>
+                <a href="#" class="archive-link">April 2021</a>
+                <a href="#" class="archive-link">March 2021</a>
+                <a href="#" class="archive-link">January 2021</a>
+                <a href="#" class="archive-link">May 2020</a>
+                <a href="#" class="archive-link">April 2020</a>
+                <a href="#" class="archive-link">January 2020</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="donate-section" id="donate">
+        <div class="donate-container">
+            <div class="donate-intro">
+                <h2 data-lang-en>The AMCB Foundation relies on the community to help those in need. <span class="highlight">YOU</span> are the key to our success!</h2>
+                <h2 data-lang-bn>এএমসিবি ফাউন্ডেশন সাহায্যপ্রার্থীদের সাহায্য করতে সম্প্রদায়ের উপর নির্ভর করে। <span class="highlight">আপনিই</span> আমাদের সাফল্যের চাবিকাঠি!</h2>
+                <p data-lang-en>Your donations and volunteering help us provide the necessities of life to those who need it the most.</p>
+                <p data-lang-bn>আপনার দান এবং স্বেচ্ছাসেবা আমাদের সবচেয়ে সাহায্যপ্রার্থী মানুষদের জীবনের প্রয়োজনীয় জিনিস সরবরাহ করতে সাহায্য করে।</p>
+            </div>
+
+            <div class="donate-grid">
+                <!-- Donate Card -->
+                <div class="donate-card">
+                    <div class="donate-card-icon">💝</div>
+                    <h3 data-lang-en>Donate</h3>
+                    <h3 data-lang-bn>দান করুন</h3>
+                    <p data-lang-en>Your gift allows us to provide basic needs to people in need in Bangladesh. It allows us to provide food, clothing, medical care, blankets, and school supplies to rural villagers who don't have access to these items.</p>
+                    <p data-lang-bn>আপনার দান আমাদের বাংলাদেশের সাহায্যপ্রার্থী মানুষদের মৌলিক চাহিদা পূরণ করতে সাহায্য করে। এটি আমাদের গ্রামীণ মানুষদের খাদ্য, পোশাক, চিকিৎসা সেবা, কম্বল এবং স্কুলের সরঞ্জাম সরবরাহ করতে সক্ষম করে।</p>
+                    <ul>
+                        <li data-lang-en>One-time online money donation (General, Zakat, Sadqa)</li>
+                        <li data-lang-bn>এককালীন অনলাইন অর্থ দান (সাধারণ, যাকাত, সদকা)</li>
+                        <li data-lang-en>Recurring money donations - set up donations as frequently as you want</li>
+                        <li data-lang-bn>নিয়মিত অর্থ দান - আপনার ইচ্ছামতো ঘন ঘন দান সেট করুন</li>
+                        <li data-lang-en>Other donations: food, clothing, blankets, medicine, medical equipment</li>
+                        <li data-lang-bn>অন্যান্য দান: খাদ্য, পোশাক, কম্বল, ওষুধ, চিকিৎসা সরঞ্জাম</li>
+                    </ul>
+                    <p data-lang-en>For goods donations, please email us at <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">amcbfoundationbangladesh@gmail.com</a></p>
+                    <p data-lang-bn>পণ্য দানের জন্য, অনুগ্রহ করে আমাদের ইমেইল করুন <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">amcbfoundationbangladesh@gmail.com</a></p>
+                </div>
+
+                <!-- Volunteer Card -->
+                <div class="donate-card">
+                    <div class="donate-card-icon">🤝</div>
+                    <h3 data-lang-en>Volunteer</h3>
+                    <h3 data-lang-bn>স্বেচ্ছাসেবক হন</h3>
+                    <p data-lang-en>The AMCB Foundation Bangladesh relies on volunteers to help us provide aid to those who need it. You can volunteer as much or as little as you want.</p>
+                    <p data-lang-bn>এএমসিবি ফাউন্ডেশন বাংলাদেশ স্বেচ্ছাসেবকদের উপর নির্ভর করে সাহায্যপ্রার্থীদের সাহায্য করতে। আপনি যতটুকু চান ততটুকু স্বেচ্ছাসেবা করতে পারেন।</p>
+                    <ul>
+                        <li data-lang-en>Join us for one day or volunteer regularly</li>
+                        <li data-lang-bn>একদিনের জন্য যোগ দিন বা নিয়মিত স্বেচ্ছাসেবা করুন</li>
+                        <li data-lang-en>Help set up a volunteering event</li>
+                        <li data-lang-bn>স্বেচ্ছাসেবা ইভেন্ট আয়োজনে সাহায্য করুন</li>
+                        <li data-lang-en>Currently living in or planning to travel to Bangladesh? We can use your help!</li>
+                        <li data-lang-bn>বর্তমানে বাংলাদেশে আছেন বা যাওয়ার পরিকল্পনা করছেন? আমরা আপনার সাহায্য নিতে চাই!</li>
+                    </ul>
+                    <p data-lang-en>If you are interested in volunteering, please <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">contact us</a>.</p>
+                    <p data-lang-bn>স্বেচ্ছাসেবায় আগ্রহী হলে, অনুগ্রহ করে <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">যোগাযোগ করুন</a>।</p>
+                </div>
+
+                <!-- Collaborate Card -->
+                <div class="donate-card">
+                    <div class="donate-card-icon">🌐</div>
+                    <h3 data-lang-en>Collaborate</h3>
+                    <h3 data-lang-bn>সহযোগিতা করুন</h3>
+                    <p data-lang-en>We are always interested in working with other groups and individuals. Together, we can make a bigger impact in the lives of those who need help the most.</p>
+                    <p data-lang-bn>আমরা সবসময় অন্যান্য গ্রুপ এবং ব্যক্তিদের সাথে কাজ করতে আগ্রহী। একসাথে, আমরা সবচেয়ে সাহায্যপ্রার্থী মানুষদের জীবনে বড় প্রভাব ফেলতে পারি।</p>
+                    <ul>
+                        <li data-lang-en>Partner with us on community projects</li>
+                        <li data-lang-bn>কমিউনিটি প্রজেক্টে আমাদের সাথে অংশীদার হন</li>
+                        <li data-lang-en>Joint fundraising initiatives</li>
+                        <li data-lang-bn>যৌথ তহবিল সংগ্রহ উদ্যোগ</li>
+                        <li data-lang-en>Resource sharing and coordination</li>
+                        <li data-lang-bn>সম্পদ ভাগাভাগি এবং সমন্বয়</li>
+                    </ul>
+                    <p data-lang-en>If you are interested in working with us, please <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">contact us</a>.</p>
+                    <p data-lang-bn>আমাদের সাথে কাজ করতে আগ্রহী হলে, অনুগ্রহ করে <a href="mailto:amcbfoundationbangladesh@gmail.com" class="contact-link">যোগাযোগ করুন</a>।</p>
+                </div>
+            </div>
+
+            <div class="registration-info">
+                <p data-lang-en>The <strong>AMCB Foundation Bangladesh</strong> is registered as a non-profit NGO in Bangladesh<br>(Registration No. 3091, Taxpayer Identification No. 448413744565)</p>
+                <p data-lang-bn><strong>এএমসিবি ফাউন্ডেশন বাংলাদেশ</strong> বাংলাদেশে একটি অলাভজনক এনজিও হিসেবে নিবন্ধিত<br>(নিবন্ধন নং ৩০৯১, করদাতা শনাক্তকরণ নং ৪৪৮৪১৩৭৪৪৫৬৫)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section" id="impact">
+        <h2 data-lang-en>Your Support Changes Lives</h2>
+        <h2 data-lang-bn>আপনার সাহায্যে জীবন বদলে যায়</h2>
+        <p data-lang-en>Every donation helps us provide essential medical care, distribute vital supplies, and support vulnerable communities across rural Bangladesh.</p>
+        <p data-lang-bn>প্রতিটি দান আমাদের প্রয়োজনীয় চিকিৎসা সেবা প্রদান, জরুরি সামগ্রী বিতরণ এবং গ্রামীণ বাংলাদেশের অসহায় সম্প্রদায়গুলোকে সাহায্য করতে সক্ষম করে।</p>
+        <a href="#donate" class="btn btn-primary" data-lang-en>Make a Donation Today</a>
+        <a href="#donate" class="btn btn-primary" data-lang-bn>আজই দান করুন</a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-lang-en>About AMCB Foundation</h3>
+                <h3 data-lang-bn>এএমসিবি ফাউন্ডেশন সম্পর্কে</h3>
+                <p data-lang-en>AMCB Foundation Bangladesh is dedicated to improving the lives of people in rural Bangladesh through medical care, disaster relief, and community development programs.</p>
+                <p data-lang-bn>এএমসিবি ফাউন্ডেশন বাংলাদেশ গ্রামীণ বাংলাদেশের মানুষের জীবনমান উন্নয়নে চিকিৎসা সেবা, দুর্যোগ ত্রাণ এবং কমিউনিটি উন্নয়ন কার্যক্রমের মাধ্যমে নিবেদিত।</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AMCB-Foundation-417097415151666/" target="_blank" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:amcbfoundation@gmail.com" class="social-link" aria-label="Email">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 data-lang-en>Quick Links</h3>
+                <h3 data-lang-bn>দ্রুত লিঙ্ক</h3>
+                <p><a href="#home" data-lang-en>Home</a><a href="#home" data-lang-bn>হোম</a></p>
+                <p><a href="#blog" data-lang-en>Blog</a><a href="#blog" data-lang-bn>ব্লগ</a></p>
+                <p><a href="#impact" data-lang-en>Our Impact</a><a href="#impact" data-lang-bn>আমাদের প্রভাব</a></p>
+                <p><a href="#donate" data-lang-en>Donate</a><a href="#donate" data-lang-bn>দান করুন</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3 data-lang-en>Contact Information</h3>
+                <h3 data-lang-bn>যোগাযোগের তথ্য</h3>
+                <p data-lang-en><strong>Address:</strong><br>
+                Plot: 3/1, Block: F<br>
+                Lalmatia, Dhaka-1207<br>
+                Bangladesh</p>
+                <p data-lang-bn><strong>ঠিকানা:</strong><br>
+                প্লট: ৩/১, ব্লক: এফ<br>
+                লালমাটিয়া, ঢাকা-১২০৭<br>
+                বাংলাদেশ</p>
+                <p data-lang-en><strong>Email:</strong><br>
+                <a href="mailto:amcbfoundation@gmail.com">amcbfoundation@gmail.com</a></p>
+                <p data-lang-bn><strong>ইমেইল:</strong><br>
+                <a href="mailto:amcbfoundation@gmail.com">amcbfoundation@gmail.com</a></p>
+            </div>
+
+            <div class="footer-section" id="about">
+                <h3 data-lang-en>Our Mission</h3>
+                <h3 data-lang-bn>আমাদের লক্ষ্য</h3>
+                <p data-lang-en>To provide essential healthcare, disaster relief, and community support to underserved populations in rural Bangladesh, promoting dignity, health, and opportunity for all.</p>
+                <p data-lang-bn>গ্রামীণ বাংলাদেশের অবহেলিত জনগোষ্ঠীকে প্রয়োজনীয় স্বাস্থ্যসেবা, দুর্যোগ ত্রাণ এবং কমিউনিটি সহায়তা প্রদান করা, সকলের জন্য মর্যাদা, স্বাস্থ্য এবং সুযোগ নিশ্চিত করা।</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p data-lang-en>&copy; 2025 AMCB Foundation Bangladesh. All rights reserved. | Built with ❤️ for a better Bangladesh</p>
+            <p data-lang-bn>&copy; ২০২৫ এএমসিবি ফাউন্ডেশন বাংলাদেশ। সর্বস্বত্ব সংরক্ষিত। | ❤️ দিয়ে তৈরি একটি সুন্দর বাংলাদেশের জন্য</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            document.documentElement.lang = savedLang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if ((savedLang === 'en' && btn.textContent === 'EN') ||
+                    (savedLang === 'bn' && btn.textContent === 'বাং')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Hero Slideshow
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe blog cards
+        document.querySelectorAll('.blog-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Observe stat cards
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.15}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
